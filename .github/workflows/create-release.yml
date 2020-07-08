@@ -36,5 +36,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ${{ steps.build.outputs.artifact_path }}
-          asset_name: mqcontrol_${{ steps.get-tag.outputs.tag }}_linux_amd64
+          asset_name: helloworld_${{ steps.get-tag.outputs.tag }}.js
           asset_content_type: application/octet-stream
