@@ -1,0 +1,40 @@
+on:
+  push:
+    tags:
+    - 'v*'
+
+name: Create release with assets
+
+jobs:
+  build:
+    name: Upload Release Asset
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set output
+        id: get-tag
+        run: echo ::set-output name=tag::${GITHUB_REF:11}
+      - name: Build
+        id: build
+        uses: ./.github/actions/docker-build
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: true
+      - name: Upload asset
+        id: upload-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ steps.build.outputs.artifact_path }}
+          asset_name: mqcontrol_${{ steps.get-tag.outputs.tag }}_linux_amd64
+          asset_content_type: application/octet-stream

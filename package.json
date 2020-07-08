@@ -1,0 +1,27 @@
+{
+  "name": "demo-three-stage-dockerfile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc helloworld.ts --outDir dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/albertnis/demo-three-stage-dockerfile.git"
+  },
+  "keywords": [
+    "docker"
+  ],
+  "author": "Albert Nisbet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albertnis/demo-three-stage-dockerfile/issues"
+  },
+  "homepage": "https://github.com/albertnis/demo-three-stage-dockerfile#readme",
+  "devDependencies": {
+    "@types/node": "^14.0.19",
+    "typescript": "^3.9.6"
+  }
+}

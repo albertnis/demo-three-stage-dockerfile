@@ -1,0 +1,8 @@
+name: Docker Build
+description: Build the project using Docker
+outputs:
+  artifact_path:
+    description: Path to the build artifact
+runs:
+  using: docker
+  image: ./Dockerfile
