@@ -12,4 +12,4 @@ COPY --from=build /project/dist/helloworld.js helloworld.js
 
 FROM node:14-buster-slim as runtime
 COPY --from=build /project/dist/helloworld.js helloworld.js
-CMD ["node", "helloworld.js"]
+ENTRYPOINT ["node", "helloworld.js"]
