@@ -8,4 +8,5 @@ docker login docker.pkg.github.com -u albertnis -p $GH_TOKEN
 
 docker build -t $IMAGE_NAME:$VERSION -t $IMAGE_NAME:latest .
 
-docker push $IMAGE_NAME
+docker push $IMAGE_NAME:$VERSION
+docker push $IMAGE_NAME:latest
